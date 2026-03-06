@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Chitamma &#127872; </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== Global Styling ===== */
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ff9ecf,#c084fc);
+    overflow-x:hidden;
+    color:white;
+    scroll-behavior:smooth;
+    text-align:center;
+}
+
+/* ===== PASSWORD SCREEN ===== */
+#lockScreen{
+position:fixed;
+width:100%;
+height:100vh;
+background:linear-gradient(135deg,#ff4da6,#c084fc);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+#lockScreen input{
+padding:12px;
+border-radius:25px;
+border:none;
+margin-top:15px;
+text-align:center;
+}
+
+#lockScreen button{
+margin-top:15px;
+padding:10px 25px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+background:white;
+color:#ff4da6;
+font-weight:bold;
+}
+
+/* ===== Cinematic Intro ===== */
+#intro{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:linear-gradient(135deg,#ff4da6,#c084fc);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+    animation:fadeOut 3s 4s forwards;
+}
+
+#intro h1{
+    font-family:'Poppins', sans-serif;
+    font-size:3rem;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden;}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff,0 0 20px #ff1493;}
+    to{text-shadow:0 0 15px #fff,0 0 40px #ff69b4;}
+}
+
+#intro h2{
+    font-family:'Poppins', sans-serif;
+    font-size:3rem;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden;}
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff,0 0 20px #ff1493;}
+    to{text-shadow:0 0 15px #fff,0 0 40px #ff69b4;}
+}
+
+/* ===== Hero Section ===== */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero h1{
+    font-family:'Poppins', sans-serif;
+    font-size:3.5rem;
+    animation:glow 2s infinite alternate;
+}
+
+#countdown{
+    margin-top:15px;
+    font-size:1.3rem;
+    background:rgba(255,255,255,0.2);
+    padding:10px 20px;
+    border-radius:30px;
+}
+
+/* Buttons */
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4da6;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+    background:#ff4da6;
+    color:white;
+}
+
+/* ===== Message Section ===== */
+.message{
+    padding:70px 20px;
+    max-width:700px;
+    margin:auto;
+}
+
+/* ===== Gallery ===== */
+.gallery{
+    padding:100px 100px;
+}
+
+.gallery img{
+    width: 380px;
+    height:auto;
+    object-fit:cover;
+    border-radius:20px;
+    display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.gallery img.active{
+    display:block;
+    margin:auto;
+}
+
+/* ===== POPUP OVERLAY ===== */
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s ease;
+    padding:20px; /* prevents touching screen edges on mobile */
+}
+
+/* Active State */
+.popup.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* ===== POPUP CONTENT (BIGGER + SCROLLABLE) ===== */
+.popup-content{
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(20px);
+    padding:50px;
+    border-radius:25px;
+    width:90%;
+    max-width:600px;       /* Increased width */
+    max-height:80vh;       /* Prevent overflow */
+    overflow-y:auto;       /* Enable vertical scroll */
+    animation:popUp 0.4s ease;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar Styling */
+.popup-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.popup-content::-webkit-scrollbar-track{
+    background:rgba(255,255,255,0.2);
+    border-radius:10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb{
+    background:#ff4da6;
+    border-radius:10px;
+}
+
+/* Animation */
+@keyframes popUp{
+    from{transform:scale(0.7);opacity:0;}
+    to{transform:scale(1);opacity:1;}
+}
+
+/* Responsive for small devices */
+@media(max-width:480px){
+    .popup-content{
+        padding:30px;
+        max-width:95%;
+    }
+}
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:18px;
+    animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(0);}
+    to{transform:translateY(-120vh);}
+}
+
+.firework{
+position:fixed;
+width:6px;
+height:6px;
+border-radius:50%;
+}
+
+</style>
+</head>
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lockScreen">
+    <div id="intro">
+    <h1>Happy Birthday Chittamma &#127872;💖&#127874;</h1>
+    <h2>Cheers to 21 💕🎉</h2>
+    </div>
+<h1>🔐 Enter Secret Password</h1>
+<input type="password" id="password" placeholder="Enter password">
+<button onclick="checkPassword()">Unlock 💖</button>
+<p id="error"></p>
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+<source src="Audio/BirthdayAudio.mpeg" type="audio/mpeg">
+</audio>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>Happy Birthday Chitti Thalli &#127872;💕&#127874;</h1>
+    <div id="countdown"></div>
+    <button onclick="playMusic()">Play Music 🎵</button>
+    <button onclick="openSurprise()">Open Surprise 🎁</button>
+</section>
+
+<!-- Message -->
+<section class="message">
+    <h2>For You 💌</h2>
+    <h3><p id="typewriter"></p></h3>
+</section>
+
+<!-- Gallery -->
+<section class="gallery">
+    <h2>Our Best Memories 💕📸</h2>
+    <img src="Images1/1.jpeg" class="active">
+    <img src="Images1/2.jpeg">
+    <img src="Images1/3.jpeg">
+    <img src="Images1/4.jpeg">
+    <img src="Images1/5.jpeg">
+    <img src="Images2/6.jpeg">
+    <img src="Images2/7.jpeg">
+    <img src="Images2/8.jpeg">
+    <img src="Images2/9.jpeg">
+    <img src="Images2/10.jpeg">
+    <img src="Images2/11.jpeg">
+    <img src="Images2/12.jpeg">
+    <img src="Images3/13.jpeg">
+    <img src="Images3/14.jpeg">
+    <img src="Images3/15.jpeg">
+    <img src="Images4/16.jpg">
+    <img src="Images4/17.jpg">
+    <img src="Images4/18.jpg">
+    <img src="Images5/19.jpg">
+    <img src="Images5/20.jpg">
+    <img src="Images5/21.jpg">
+    <img src="Images6/22.jpeg">
+    <img src="Images6/23.jpeg">
+</section>
+
+<!-- ===== UPDATED POPUP SECTION ===== -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2>🎉 Happy Birthday Chitti Thalli &#127872;💖🎉</h2>
+    <p><div>
+      Happy Birthday Chitamma &#127872;💖🎉<br>
+      Enjoy Your day with ur Loved Ones<br>
+      All your dreams comes true and fullfilled with success ✨<br><br>
+      Thank you for caring and understanding me and support me when i'm feel low.<br>
+      Thank you being with me in every situation my Well Wisher 💖✨<br><br>
+      Mundhey kadhu appudu ippudu eppudu okka mata medhey vunta a situation vachina nen eppudu nethone unta promise forever and ever,
+      untill my last breath ✨<br><br>
+      A situation vachina nen unna ani gurthupettuko amma a kastam vachina netho yevaru una lekapoyina nen nethone unta promise amma.<br><br>
+      U are my special person in my life chitti thalli nen ninnu a paristhithilo vadhulukolenu amma💖<br><br>
+      Eppudu happy ga undu amma untav kuda Be happy and Healthy💖<br>
+      Thank you amma na life loki vachinandhuku thank you for everything and make me happy✨<br><br>
+      On your special day, I just want to remind you how amazing,
+      kind, and beautiful you are 💖 <br><br>
+      May your life be filled with happiness, success,
+      and endless smiles ✨<br><br>
+      You deserve all the love in the world 💕
+      Thank u soo much for coming into my life and being my part of my life chitti thalli 💕 Have your special day with loved vibes <br><br>
+      Miss You a lot ra chittithalli &#x2764; &#129402;
+    </div></p>
+    <button onclick="closeSurprise()">Close 💌</button>
+  </div>
+</div>
+
+<script>
+
+/* PASSWORD CHECK */
+function checkPassword(){
+let pass=document.getElementById("password").value;
+if(pass==="08032005"){   // 🔥 Change password here
+document.getElementById("lockScreen").style.display="none";
+document.getElementById("envelopeSection").style.display="flex";
+document.getElementById("music").play();
+}
+else{
+document.getElementById("error").innerHTML="Wrong Password 💔";
+}
+}
+
+/* Countdown */
+const birthday=new Date("March 8, 2026 00:00:00").getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let diff=birthday-now;
+let d=Math.floor(diff/(1000*60*60*24));
+let h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((diff%(1000*60*60))/(1000*60));
+let s=Math.floor((diff%(1000*60))/1000);
+document.getElementById("countdown").innerHTML=`${d} Days ${h}h ${m}m ${s}s`;
+},1000);
+
+/* Typewriter */
+const text="You are my Fav, you are my happiness, my comfort, my everyting, my world and my biggest smile. Happy Birthday Chitti Thali🎀🎂 (Pandhi Muthu🐷🐽) ♥️🦚🌕";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typewriter").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,40);
+}
+}
+type();
+
+/* Slideshow */
+let slides=document.querySelectorAll(".gallery img");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},3000);
+
+/* Music */
+function playMusic(){
+document.getElementById("music").play();
+}
+
+/* ===== UPDATED POPUP FUNCTIONS ===== */
+function openSurprise(){
+    document.getElementById("popup").classList.add("active");
+    confetti();
+}
+
+function closeSurprise(){
+    document.getElementById("popup").classList.remove("active");
+}
+
+/* Confetti */
+function confetti(){
+for(let i=0;i<80;i++){
+let conf=document.createElement("div");
+conf.style.position="fixed";
+conf.style.width="6px";
+conf.style.height="6px";
+conf.style.background=`hsl(${Math.random()*360},100%,50%)`;
+conf.style.top=Math.random()*100+"vh";
+conf.style.left=Math.random()*100+"vw";
+document.body.appendChild(conf);
+setTimeout(()=>conf.remove(),100000);
+}
+}
+
+/* Floating Hearts */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* Floating Cakes */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="&#127874;";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* Floating Cakes */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💕";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* Floating Cakes */
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="✨";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+
+/* FIREWORKS AT MIDNIGHT */
+setInterval(()=>{
+let now=new Date();
+if(now.getHours()===0 && now.getMinutes()===0 && now.getSeconds()<3){
+for(let i=0;i<60;i++){
+let fire=document.createElement("div");
+fire.className="firework";
+fire.style.background=`hsl(${Math.random()*360},100%,50%)`;
+fire.style.top=Math.random()*100+"vh";
+fire.style.left=Math.random()*100+"vw";
+document.body.appendChild(fire);
+setTimeout(()=>fire.remove(),10000);
+}
+}
+},1000);
+
+</script>
+
+</body>
+</html>
